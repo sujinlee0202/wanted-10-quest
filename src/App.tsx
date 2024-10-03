@@ -52,13 +52,14 @@ function App() {
   }, [isLoading]);
 
   if (!products) {
-    return <div>제품이 없습니다</div>;
+    return <div className='page-rendering'>로딩중...</div>;
   }
 
   return (
     <main>
       <Header products={products} />
       <ul className='lists'>
+        {isLoading && <div className='loading'></div>}
         {products.datas.map((product: MockData) => {
           return (
             <li key={product.productId} className='list'>
